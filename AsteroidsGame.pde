@@ -1,15 +1,73 @@
 //your variable declarations here
+SpaceShip bob = new SpaceShip();
+boolean up=false;
+boolean left=false;
+boolean right=false;//your variable declarations here
 public void setup() 
 {
-  //your code here
+  size(600,600);
+  background(0);
 }
 public void draw() 
 {
-  //your code here
+  background(0);
+  if(up){bob.accelerate(.1);}
+  if(left){bob.rotate(-5);}
+  if(right){bob.rotate(5);}
+  bob.move();
+  bob.show();
 }
-class SpaceShip //extends Floater  
+public void keyPressed()
+{  
+      if(key=='w'){up=true;}
+      if(key=='a'){left=true;}
+      if(key=='d'){right=true;}
+}
+public void keyReleased()
+{  
+      if(key=='w'){up=false;}
+      if(key=='a'){left=false;}
+      if(key=='d'){right=false;}
+}
+class SpaceShip extends Floater  
 {   
-    //your code here
+  public SpaceShip()
+  {
+    myColor=(255);
+    myCenterX = 300;
+    myCenterY = 300;
+      corners = 4;
+      xCorners = new int[corners];
+      yCorners = new int[corners];
+      xCorners[0] = -8;
+      yCorners[0] = -8;
+      xCorners[1] = 16;
+      yCorners[1] = 0;
+      xCorners[2] = -8;
+      yCorners[2] = 8;
+    for (int i=0;i<corners;i++)
+    {
+      xCorners[i] *= 2.2;
+      yCorners[i] *= 2.2;
+    }
+  }
+  public void setX(int x){myCenterX = x;} 
+  public int getX(){return (int)myCenterX;}   
+  public void setY(int y){myCenterY = y;}   
+  public int getY(){return (int)myCenterY;}   
+  public void setDirectionX(double x){myDirectionX=x;}   
+  public double getDirectionX(){return (int)myDirectionX;}   
+  public void setDirectionY(double y){myDirectionY=y;}   
+  public double getDirectionY(){return (int) myDirectionY;}   
+  public void setPointDirection(int degrees){myPointDirection = degrees;}   
+  public double getPointDirection(){return(int)myPointDirection;}
+  public void keyPressed()
+  {
+    if(key=='d')
+    {
+
+    }
+  }
 }
 abstract class Floater //Do NOT modify the Floater class! Make changes in the SpaceShip class 
 {   
@@ -87,4 +145,9 @@ abstract class Floater //Do NOT modify the Floater class! Make changes in the Sp
     endShape(CLOSE);  
   }   
 } 
+
+
+
+
+
 
